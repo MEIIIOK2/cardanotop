@@ -54,11 +54,11 @@ componentDidMount() {
       const b = []
       fetch(a).then((res)=>res.json().then((json)=>json.market_caps.map((n)=>b.push({"date":new Date(n[0]).toLocaleDateString('en-US'), [cim]:parseInt(n[1])})))).then(function(result){
         if (index!=0) {
-          console.log(data)
-          console.log(b)
+          // console.log(data)
+          // console.log(b)
          
           data = data.map(t1 => ({...t1, ...b.find(t2 => t2.date === t1.date)}))
-          console.log(data);
+          // console.log(data);
         
         }
         else{
@@ -68,7 +68,7 @@ componentDidMount() {
       }).then((dt)=>this.setState({
         items:dt,
         DataisLoaded:this.state.DataisLoaded+1
-      }))
+      })).then(this.render)
       
       
     }
@@ -82,7 +82,7 @@ render() {
     
     console.log(items)
     console.log(DataisLoaded)
-    if (DataisLoaded<2) {
+    if (DataisLoaded<3) {
       
       return(
         <h1>Loading, please wait</h1>
