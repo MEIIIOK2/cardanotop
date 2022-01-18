@@ -27,14 +27,14 @@ constructor(props) {
 
     this.state = {
         items: [],
-        DataisLoaded: 0
+        DataisLoaded: false
     };
     this.onChangeBool = this.onChangeBool.bind(this)
     this.onSetData = this.onSetData.bind(this)
 }
 onChangeBool(){
   this.setState({
-    DataisLoaded: this.state.DataisLoaded+1
+    DataisLoaded: true
   })
 }
 onSetData(data){
@@ -42,10 +42,7 @@ onSetData(data){
     items:data
   })
 }
-
-// ComponentDidMount is used to
-// execute the code 
-componentDidMount() {
+ async fetchData(){
   let data = []
   
     for (let index = 0; index < currencies.length; index++) {
@@ -66,9 +63,9 @@ componentDidMount() {
         }
         return data
       }).then((dt)=>this.setState({
-        items:dt,
-        DataisLoaded:this.state.DataisLoaded+1
-      })).then(this.render)
+        items:dt
+        
+      }))
       
       
     }
@@ -77,12 +74,19 @@ componentDidMount() {
     //   items:data
     // });
 }
+
+// ComponentDidMount is used to
+// execute the code 
+componentDidMount() {
+  this.fetchData().then(this.onChangeBool)
+  this.timer = setInterval(()=> this.fetchData(),100000)
+}
 render() {
     const { DataisLoaded, items } = this.state;
     
     console.log(items)
     console.log(DataisLoaded)
-    if (DataisLoaded<3) {
+    if (!DataisLoaded) {
       
       return(
         <h1>Loading, please wait</h1>
