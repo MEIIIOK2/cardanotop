@@ -44,28 +44,38 @@ onSetData(data){
 }
  async fetchData(){
   let data = []
-  
+  const b = [[],[],[]]
     for (let index = 0; index < currencies.length; index++) {
       let a = 'https://api.coingecko.com/api/v3/coins/'+currencies[index]+'/market_chart?vs_currency=usd&days=365&interval=daily'
       let cim = currencies[index]
-      const b = []
-      fetch(a).then((res)=>res.json().then((json)=>json.market_caps.map((n)=>b.push({"date":new Date(n[0]).toLocaleDateString('en-US'), [cim]:parseInt(n[1])})))).then(function(result){
-        if (index!=0) {
-          // console.log(data)
-          // console.log(b)
-         
-          data = data.map(t1 => ({...t1, ...b.find(t2 => t2.date === t1.date)}))
+      
+      
+      
+      fetch(a).then((res)=>res.json().then((json)=>json.market_caps.map((n)=>b[index].push({"date":new Date(n[0]).toLocaleDateString('en-US'), [cim]:parseInt(n[1])})))).then(function(result){
+        console.log(index)
+          console.log(data.length)
+          console.log(b[index].length)
+          console.log(b)
+          console.log(data)
+        if (!data.length==0) {
+          
+         if (data.length>b[index].length) {
+          data = data.map(t1 => ({...t1, ...b[index].find(t2 => t2.date === t1.date)}))
+         }
+          else{
+            data = b[index].map(t1 => ({...t1, ...data.find(t2 => t2.date === t1.date)}))
+          }
           // console.log(data);
         
         }
         else{
-          data=b
+          data=b[index]
         }
         return data
       }).then((dt)=>this.setState({
         items:dt
         
-      }))
+      })).catch(error=>{console.log(error)})
       
       
     }
@@ -84,8 +94,8 @@ componentDidMount() {
 render() {
     const { DataisLoaded, items } = this.state;
     
-    console.log(items)
-    console.log(DataisLoaded)
+    // console.log(items)
+    // console.log(DataisLoaded)
     if (!DataisLoaded) {
       
       return(
