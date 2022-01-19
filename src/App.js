@@ -11,8 +11,13 @@ class App extends React.Component {
   render() {
       
       return (
-        <div className = "App-header">
+
+        <div className = "App">
+          <div className = "App-header">
+            <h1>Marcetcaps</h1>
+          </div>
           <Example/>
+          
         </div>
       
   );
