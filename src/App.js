@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import Example from './Example';
+import List from './List';
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 
 import React from "react";
@@ -13,10 +14,16 @@ class App extends React.Component {
       return (
 
         <div className = "App">
+          <div className = "top-table">
+            <List/>
+          </div>
+          
           <div className = "App-header">
             <h1>Marcetcaps</h1>
+            <Example/>
           </div>
-          <Example/>
+          
+          
           
         </div>
       

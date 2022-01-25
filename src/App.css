@@ -1,12 +1,12 @@
 .App {
   background-color: #282c34;
-  width:100vw;
-  height:100vh;
+  width:1fr;
+  height:1fr;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  align-items:center;
+  
   font-size: calc( 1.5vmin);
   color: white;
 }
@@ -24,10 +24,37 @@
 .App-header {
   background-color: #282c34;
   width:100vw;
-  height:10vh;
+  height: calc(100vw/2);
   min-height: 10vh;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content:space-evenly;
+  font-size: calc( 1.5vmin);
+  color: white;
+}
+.rdt_TableCell{
+  font-size: calc( 1.5vmin);
+  width: auto;
+}
+.rdt_TableCol{
+  width: 10px;
+}
+.rdt_TableRow{
+  height: auto;
+  width: auto;
+}
+.rtd_Table{
+  width:1000px;
+  height:1000px;
+}
+.top-table {
+  margin-top: 0px;
+  width:50vw;
+  height:25vh;
+  min-height: 10vh;
+  display: flex;
+  flex-direction:row;
   align-items: center;
   justify-content: center;
   font-size: calc( 1.5vmin);
