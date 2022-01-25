@@ -19,7 +19,7 @@ class App extends React.Component {
           </div>
           
           <div className = "App-header">
-            <h1>Marcetcaps</h1>
+            <h1>Market Cap Chart</h1>
             <Example/>
           </div>
           

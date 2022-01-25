@@ -62,15 +62,15 @@ class List extends React.Component{
             },
         ];
         const {data,isloaded} = this.state;
-        console.log(isloaded)
+        // console.log(isloaded)
         if (!isloaded) {
             return(
                 // <DataTable columns ={columns} data={data}/>
                 <h1>Loading</h1>
             )
         }
-        console.log('rendering')
-        console.log(this.state.data)
+        // console.log('rendering')
+        // console.log(this.state.data)
         
         return(
            <DataTable columns ={columns} data={data} theme='dark'/>

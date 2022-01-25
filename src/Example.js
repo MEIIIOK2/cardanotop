@@ -101,10 +101,10 @@ componentDidMount() {
       )
     }
 
-    console.log('Rendering')
+    // console.log('Rendering')
     return (
 
-      <ResponsiveContainer width="70%" height="70%" minHeight={10}>
+      <ResponsiveContainer width="70%" height="70%" minHeight={100}>
         <AreaChart data={items}
           margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
           <defs>
