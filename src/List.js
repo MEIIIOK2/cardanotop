@@ -73,7 +73,7 @@ class List extends React.Component{
         // console.log(this.state.data)
         
         return(
-           <DataTable columns ={columns} data={data} theme='dark'/>
+           <DataTable columns ={columns} data={data} theme='dark' fixedHeaderScrollHeight="100%" fixedHeader/>
         )
     }
 }
